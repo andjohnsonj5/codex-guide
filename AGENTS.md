@@ -33,12 +33,12 @@
 
 ```bash
 if ! command -v gh >/dev/null 2>&1; then
-  echo "ERROR: GitHub CLI (gh) not installed" >&2
+  echo "error: GitHub CLI (gh) not installed" >&2
   exit 2
 fi
 
 if ! gh auth status --hostname github.com >/dev/null 2>&1; then
-  echo "ERROR: GitHub CLI (gh) not authenticated" >&2
+  echo "error: GitHub CLI (gh) not authenticated" >&2
   exit 3
 fi
 ```
@@ -61,11 +61,11 @@ export GIT_TERMINAL_PROMPT=0
 
 # 前置检查
 if ! command -v gh >/dev/null 2>&1; then
-  echo "ERROR: GitHub CLI (gh) not installed" >&2
+  echo "error: GitHub CLI (gh) not installed" >&2
   exit 2
 fi
 if ! gh auth status --hostname github.com >/dev/null 2>&1; then
-  echo "ERROR: GitHub CLI (gh) not authenticated" >&2
+  echo "error: GitHub CLI (gh) not authenticated" >&2
   exit 3
 fi
 
@@ -123,7 +123,7 @@ fi
 
   ```bash
   if ! GIT_TERMINAL_PROMPT=0 git push origin main; then
-    echo "ERROR: Non-interactive Git authentication failed." >&2
+    echo "error: Non-interactive Git authentication failed." >&2
     exit 1
   fi
   ```
@@ -246,13 +246,13 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
 * **系统命令执行**：统一在命令后添加错误捕捉：
 
   ```bash
-  command || { echo "ERROR: command failed" >&2; exit 1; }
+  command || { echo "error: command failed" >&2; exit 1; }
   ```
 
 * **服务操作**：对 `systemctl` 等命令必须检查状态并返回明确结果：
 
   ```bash
-  systemctl restart <service> || { echo "ERROR: failed to restart <service>" >&2; exit 1; }
+  systemctl restart <service> || { echo "error: failed to restart <service>" >&2; exit 1; }
   ```
 
 * **脚本设计要求**：所有脚本需在开头增加：
@@ -271,5 +271,4 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
   ```
 
 通过这些指引，确保所有命令在任意场景下均可安全、可预测地以非交互方式执行。
-
 
