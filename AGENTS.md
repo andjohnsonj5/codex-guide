@@ -33,12 +33,12 @@
 
 ```bash
 if ! command -v gh >/dev/null 2>&1; then
-  echo "error: GitHub CLI (gh) not installed" >&2
+  echo "error: github cli (gh) not installed" >&2
   exit 2
 fi
 
 if ! gh auth status --hostname github.com >/dev/null 2>&1; then
-  echo "error: GitHub CLI (gh) not authenticated" >&2
+  echo "error: github cli (gh) not authenticated" >&2
   exit 3
 fi
 ```
@@ -61,11 +61,11 @@ export GIT_TERMINAL_PROMPT=0
 
 # 前置检查
 if ! command -v gh >/dev/null 2>&1; then
-  echo "error: GitHub CLI (gh) not installed" >&2
+  echo "error: github cli (gh) not installed" >&2
   exit 2
 fi
 if ! gh auth status --hostname github.com >/dev/null 2>&1; then
-  echo "error: GitHub CLI (gh) not authenticated" >&2
+  echo "error: github cli (gh) not authenticated" >&2
   exit 3
 fi
 
@@ -123,7 +123,7 @@ fi
 
   ```bash
   if ! GIT_TERMINAL_PROMPT=0 git push origin main; then
-    echo "error: Non-interactive Git authentication failed." >&2
+    echo "error: non-interactive git authentication failed." >&2
     exit 1
   fi
   ```
@@ -178,7 +178,7 @@ fi
 ```bash
 if [ -f /etc/os-release ]; then
   . /etc/os-release
-  echo "Detected OS: $ID, version: $VERSION_ID"
+  echo "detected os: $ID, version: $VERSION_ID"
 fi
 ```
 
@@ -271,4 +271,3 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
   ```
 
 通过这些指引，确保所有命令在任意场景下均可安全、可预测地以非交互方式执行。
-
