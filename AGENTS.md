@@ -267,7 +267,30 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
 * **下载与网络操作**：`curl`、`wget` 等必须包含超时、失败重试和错误返回：
 
   ```bash
-  curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -O <url>
+ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -O <url>
   ```
 
 通过这些指引，确保所有命令在任意场景下均可安全、可预测地以非交互方式执行。
+
+---
+
+## 7. 日志与文件查看规范（禁止持续跟随）
+
+为避免阻塞、悬挂与不可控的长时间任务，查看日志或文件内容时禁止使用任何“持续观察/跟随”的参数或工具。例如：
+
+* 禁止：`tail -f <file>`、`tail --follow <file>`、`tail -F <file>`
+* 禁止：`journalctl -f ...`
+* 禁止：`docker logs -f <container>`
+* 禁止：`kubectl logs -f <pod>`、`stern -f ...`
+* 禁止：`less +F <file>`、`watch <cmd>`、`inotifywait -m ...`
+
+请改用一次性、有限输出的查询方式，并配合超时控制：
+
+* 日志示例（按时间/数量限制）：
+  * `journalctl -u <service> --since "-5m" --no-pager -n 200`
+  * `docker logs --since 10m --tail 200 <container>`
+  * `kubectl logs --since=10m --tail=200 <pod> [-c <container>]`
+* 文件示例（定量查看）：
+  * `head -n 200 <file>`、`tail -n 200 <file>`
+  * `sed -n '1,200p' <file>`
+* 命令应结合外层超时（调用层设置超时参数），确保不会无限等待。
