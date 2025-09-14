@@ -267,7 +267,7 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
 * **下载与网络操作**：`curl`、`wget` 等必须包含超时、失败重试和错误返回：
 
   ```bash
- curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -O <url>
+  curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -O <url>
   ```
 
 通过这些指引，确保所有命令在任意场景下均可安全、可预测地以非交互方式执行。
