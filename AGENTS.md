@@ -176,10 +176,7 @@ fi
 ### 检查发行版
 
 ```bash
-if [ -f /etc/os-release ]; then
-  . /etc/os-release
-  echo "detected os: $ID, version: $VERSION_ID"
-fi
+cat /etc/os-release
 ```
 
 ### 非交互式执行
