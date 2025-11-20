@@ -6,7 +6,7 @@
 
 涉及到文件编辑时，请永远使用内置的 apply_patch 工具来编辑文件。apply_patch工具一定有效无需专门验证其有效性。
 
-特别注意 apply_patch 并不是 bash 命令，请不要使用 shell 工具来调用，禁止使用cat或者python来编辑文件。
+特别注意 apply_patch 并不是 bash 命令，请不要使用 bash 来调用，禁止使用cat或者python来编辑文件。
 
 
 ---
