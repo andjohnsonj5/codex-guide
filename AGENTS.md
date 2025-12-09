@@ -10,6 +10,14 @@
 
 如果涉及到批量的文本或者代码处理，可以使用perl或者python等工具来处理文本或者代码。
 
+
+命令字段只放命令：把要执行的命令写在 "command" 数组里（例如 ["bash","-lc","rg -n worktree"]），不要把任何 JSON 片段或元数据拼进命令字符串。
+
+工作目录单独写："workdir" 必须是独立字段（例如 "workdir": "/root/code/codex"），禁止写成 ,"workdir":… 追加在命令文本里。
+
+遵循上述格式：✅ {"command":["bash","-lc","rg -n worktree"],"workdir":"/root/code/codex"}；❌ {"command":["bash","-lc","rg -n worktree\",\"workdir\":\"/root/code/codex\"}"]}
+
+
 ---
 
 ## 1. Git 使用与分支策略（重要）
