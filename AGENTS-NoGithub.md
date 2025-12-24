@@ -185,7 +185,7 @@ curl --fail --silent --show-error --connect-timeout 10 --max-time 60 -o /tmp/fil
 
 ### 总体超时
 
-在执行可能长时间运行的脚本时，应在调用层设置超时，避免无限挂起。这里的调用层指的是shell工具的调用是带超时参数的，不是指在bash里面使用timeout命令，当然非常必要时也可以配合使用timeout命令。我希望主要依靠shell工具的超时参数而不是timeout命令，timeout命令仅在非常必要时使用，且需要注意这个timeout的作用域要包含整个命令，比如timeout可以放在bash -lc前面使用就可以包含命令。
+在执行可能长时间运行的脚本时，应在调用层设置超时，避免无限挂起。这里的调用层指的是shell工具的调用是带超时参数的，不是指在bash里面使用timeout命令，当然非常必要时也可以配合使用timeout命令。我希望主要依靠shell工具的超时参数而不是timeout命令，timeout命令仅在非常必要时使用，且需要注意这个timeout的作用域要包含整个命令，比如timeout可以放在bash -lc前面使用就可以包含整个命令。
 
 ---
 
